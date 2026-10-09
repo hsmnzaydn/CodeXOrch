@@ -1,0 +1,56 @@
+{
+  "version": "3.0.112",
+  "aliases": {
+    "codexorch": "codexorch",
+    "toolkit": "toolkit"
+  },
+  "capabilities": [
+    {
+      "id": "codexorch",
+      "plugin": "codexorch",
+      "description": "Scoped toolkit coordination, handoff, durable decisions, specialist routing, and verification.",
+      "requires": [],
+      "provides": [
+        "scoped-toolkit-workflow",
+        "evidence-bound-handoff"
+      ],
+      "conflicts": [],
+      "hosts": [
+        "codex"
+      ],
+      "source": "codex-skills/codexorch/SKILL.md",
+      "license": "MIT",
+      "entrypoints": [],
+      "version": "3.0.112",
+      "group": "capabilities"
+    },
+    {
+      "id": "toolkit",
+      "plugin": "codexorch",
+      "description": "Repository-scoped contracts for the CodeXOrch toolkit itself.",
+      "repository_ids": [
+        "github.com:hsmnzaydn/codexorch"
+      ],
+      "folders": [
+        "codexorch",
+        "codexorch-oss"
+      ],
+      "requires": [
+        "codexorch"
+      ],
+      "provides": [
+        "codexorch-toolkit-project-contract"
+      ],
+      "conflicts": [],
+      "hosts": [
+        "codex"
+      ],
+      "source": "codex-skills/toolkit/SKILL.md",
+      "license": "MIT",
+      "entrypoints": [],
+      "version": "3.0.112",
+      "group": "project-packs",
+      "projectPack": true
+    }
+  ]
+}

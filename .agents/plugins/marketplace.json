@@ -1,0 +1,21 @@
+{
+  "name": "codexorch",
+  "plugins": [
+    {
+      "name": "codexorch",
+      "source": "./packages/codex/codexorch",
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      }
+    },
+    {
+      "name": "codexorch-flutter",
+      "source": "./packages/codex/codexorch-flutter",
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; style-src &#39;unsafe-inline&#39;; base-uri &#39;none&#39;; form-action &#39;none&#39;">
+  <title>{{TITLE}}</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #172936; background: #f2f5f7; }
+    body { max-width: 760px; margin: 24px auto; padding: 24px; background: white; line-height: 1.5; border-radius: 12px; }
+    h1 { font-size: 1.6rem; margin-top: 0; } h2 { font-size: 1.1rem; margin-bottom: 6px; }
+    p, ul { margin-top: 6px; } li { margin-bottom: 6px; }
+    a { color: #174e78; } small, .meta { color: #536773; }
+    .status { padding: 12px; background: #fff4e3; border-radius: 6px; }
+    section { border-top: 1px solid #d9e2e8; } details { margin-top: 24px; overflow-wrap: anywhere; }
+    summary { cursor: pointer; font-weight: 600; } code { overflow-wrap: anywhere; }
+    @media (max-width: 800px) { body { margin: 8px; padding: 16px; } }
+    @media print { body { margin: 0; } }
+  </style>
+</head>
+<body>
+  <h1>{{TITLE}}</h1>
+  <p class="meta">Sade Teknik Türkçe v1 · {{IDENTITY}}</p>
+  {{CONTENT}}
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "codex-lead-model": {
+    "route": "codex-lead-model"
+  },
+  "codex-sub-model": {
+    "route": "codex-sub-model"
+  },
+  "codex-sub-high": {
+    "route": "codex-sub-high"
+  },
+  "utility-model": {
+    "route": "utility-model"
+  },
+  "long-context-model": {
+    "route": "long-context-model"
+  },
+  "tester-model": {
+    "route": "tester-model"
+  },
+  "review-model": {
+    "route": "review-model",
+    "efforts": [
+      "medium"
+    ]
+  },
+  "security-review-model": {
+    "route": "security-review-model"
+  }
+}

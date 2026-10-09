@@ -1,0 +1,14 @@
+{
+  "name": "codexorch",
+  "version": "3.0.112",
+  "description": "Supervised multi-agent orchestration for Codex",
+  "license": "MIT",
+  "skills": [
+    "./codex-skills/"
+  ],
+  "interface": {
+    "displayName": "CodeXOrch",
+    "shortDescription": "Supervised multi-agent orchestration for Codex"
+  },
+  "hooks": "./codex-hooks/hooks.json"
+}
