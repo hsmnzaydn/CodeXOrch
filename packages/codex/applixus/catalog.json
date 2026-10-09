@@ -1,0 +1,56 @@
+{
+  "version": "3.0.112",
+  "aliases": {
+    "applixus": "applixus",
+    "toolkit": "toolkit"
+  },
+  "capabilities": [
+    {
+      "id": "applixus",
+      "plugin": "applixus",
+      "description": "Scoped toolkit coordination, handoff, durable decisions, specialist routing, and verification.",
+      "requires": [],
+      "provides": [
+        "scoped-toolkit-workflow",
+        "evidence-bound-handoff"
+      ],
+      "conflicts": [],
+      "hosts": [
+        "codex"
+      ],
+      "source": "codex-skills/applixus/SKILL.md",
+      "license": "MIT",
+      "entrypoints": [],
+      "version": "3.0.112",
+      "group": "capabilities"
+    },
+    {
+      "id": "toolkit",
+      "plugin": "applixus",
+      "description": "Repository-scoped contracts for the Applixus toolkit itself.",
+      "repository_ids": [
+        "github.com:hsmnzaydn/applixus-codex-toolkit"
+      ],
+      "folders": [
+        "applixus-codex-toolkit",
+        "applixus-codex-toolkit-oss"
+      ],
+      "requires": [
+        "applixus"
+      ],
+      "provides": [
+        "applixus-toolkit-project-contract"
+      ],
+      "conflicts": [],
+      "hosts": [
+        "codex"
+      ],
+      "source": "codex-skills/toolkit/SKILL.md",
+      "license": "MIT",
+      "entrypoints": [],
+      "version": "3.0.112",
+      "group": "project-packs",
+      "projectPack": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "applixus-flutter",
+  "version": "3.0.112",
+  "description": "applixus-flutter canonical capabilities",
+  "license": "MIT",
+  "skills": [
+    "./codex-skills/"
+  ],
+  "interface": {
+    "displayName": "applixus-flutter",
+    "shortDescription": "applixus-flutter canonical capabilities"
+  }
+}

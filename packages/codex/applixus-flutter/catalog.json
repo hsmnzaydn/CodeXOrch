@@ -1,0 +1,27 @@
+{
+  "version": "3.0.112",
+  "aliases": {
+    "flutter": "flutter"
+  },
+  "capabilities": [
+    {
+      "id": "flutter",
+      "description": "Flutter state, routing, data, localization and native bridge implementation.",
+      "entrypoint": "SKILL.md",
+      "requires": [],
+      "provides": [
+        "flutter-development"
+      ],
+      "conflicts": [],
+      "hosts": [
+        "codex"
+      ],
+      "source": "codex-skills/flutter/SKILL.md",
+      "license": "MIT",
+      "plugin": "flutter",
+      "entrypoints": [],
+      "version": "3.0.112",
+      "group": "capabilities"
+    }
+  ]
+}

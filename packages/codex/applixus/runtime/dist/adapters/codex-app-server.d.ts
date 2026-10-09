@@ -1,0 +1,1 @@
+export declare function codexRequest(home: string, cwd: string, requests: (send: (method: string, params: unknown) => Promise<unknown>) => Promise<void>, binary?: string, env?: NodeJS.ProcessEnv, args?: string[]): Promise<void>;

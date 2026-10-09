@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sade Teknik Türkçe v1 görev raporu",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "title_tr", "task_id", "milestone_id", "source_commit", "source_url", "review", "checks", "facts", "sections"],
+  "properties": {
+    "schema_version": {"const": "1"},
+    "title_tr": {"$ref": "#/$defs/text"},
+    "task_id": {"$ref": "#/$defs/nullableText"},
+    "milestone_id": {"$ref": "#/$defs/nullableText"},
+    "source_commit": {"$ref": "#/$defs/sha"},
+    "source_url": {"$ref": "#/$defs/url"},
+    "review": {
+      "type": "object", "additionalProperties": false,
+      "required": ["verdict", "reviewed_commit", "evidence_url"],
+      "properties": {
+        "verdict": {"enum": ["approved", "changes_requested", "unverified", "unknown"]},
+        "reviewed_commit": {"$ref": "#/$defs/sha"},
+        "evidence_url": {"$ref": "#/$defs/url"}
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "checked_commit", "status", "scope", "command", "evidence_url"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "checked_commit": {"$ref": "#/$defs/sha"},
+          "status": {"enum": ["passed", "failed", "not_run", "unknown"]},
+          "scope": {"$ref": "#/$defs/nullableText"},
+          "command": {"$ref": "#/$defs/nullableText"},
+          "evidence_url": {"$ref": "#/$defs/url"}
+        }
+      }
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "kind", "certainty", "text_tr", "evidence_refs"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "kind": {"enum": ["change", "verification", "open", "risk", "next"]},
+          "certainty": {"enum": ["verified", "inferred", "unknown"]},
+          "text_tr": {"$ref": "#/$defs/text"},
+          "evidence_refs": {"$ref": "#/$defs/evidenceRefs"}
+        }
+      }
+    },
+    "sections": {
+      "type": "object", "additionalProperties": false,
+      "required": ["summary", "changes", "verification", "open", "risks", "next"],
+      "properties": {
+        "summary": {"$ref": "#/$defs/refs"},
+        "changes": {"$ref": "#/$defs/refs"},
+        "verification": {"$ref": "#/$defs/refs"},
+        "open": {"$ref": "#/$defs/refs"},
+        "risks": {"$ref": "#/$defs/refs"},
+        "next": {"$ref": "#/$defs/refs"}
+      }
+    }
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "nullableText": {"type": ["string", "null"], "minLength": 1},
+    "id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"},
+    "sha": {"type": ["string", "null"], "pattern": "^[a-f0-9]{40}$"},
+    "url": {"type": ["string", "null"], "pattern": "^https://"},
+    "refs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+    "evidenceRefs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}
+  }
+}

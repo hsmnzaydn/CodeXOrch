@@ -1,0 +1,14 @@
+{
+  "name": "applixus",
+  "version": "3.0.112",
+  "description": "applixus canonical capabilities",
+  "license": "MIT",
+  "skills": [
+    "./codex-skills/"
+  ],
+  "interface": {
+    "displayName": "applixus",
+    "shortDescription": "applixus canonical capabilities"
+  },
+  "hooks": "./codex-hooks/hooks.json"
+}
