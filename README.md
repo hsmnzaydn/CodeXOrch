@@ -1,45 +1,54 @@
 # Applixus Codex Toolkit
 
-A Codex plugin collection with skills, hooks, MCP servers, and a runtime for
-orchestrating coding agents with scoped capabilities, verification, and handoff.
-Includes the core `applixus` plugin and reusable `applixus-flutter` expertise.
-Requires Node.js >=22.13 and Codex with plugin support. Agent orchestration
-workflows require Orca; optional MCP tools require their respective executables.
+A Codex plugin collection with skills, hooks, MCP relay helpers and a prebuilt
+runtime for scoped capabilities, coding-agent coordination, verification and handoff.
+Includes `applixus` (core coordination and repository guidance) and
+`applixus-flutter` (generic Flutter expertise). No client-specific product packs,
+Claude plugin packages, credentials or source Git history are included.
 
 ## Install
 
-Clone this repository, then register it as a Codex plugin marketplace using
-`.agents/plugins/marketplace.json`. Install `applixus` and, for Flutter work,
-`applixus-flutter` from the `applixus-greenfield` marketplace.
+Requires Node.js **22.13 or newer**, Codex with plugin support, and Git.
+Orca is optional for reading the skills but required for the documented supervised
+worker workflow; install and configure Orca independently.
+
+Add `hsmnzaydn/applixus-codex-toolkit` as a marketplace in Codex plugin management,
+then install `applixus` and optionally `applixus-flutter`. The marketplace is
+`.agents/plugins/marketplace.json`; manifests are
+`packages/codex/applixus/.codex-plugin/plugin.json` and
+`packages/codex/applixus-flutter/.codex-plugin/plugin.json`.
+The marketplace sources resolve to `packages/codex/<plugin>`.
+
+Use Codex plugin reload after updates. Automatic toolkit updates are disabled;
+update your marketplace checkout manually. Runtime dependencies are Node built-ins;
+no root package installation is required. Prebuilt runtime files are distributed
+as-is; upstream build tooling and source-only development infrastructure are excluded.
 
 ## Configuration
 
-No credentials or private service registrations are bundled. Export environment
-variables before launching Codex; use only endpoints and credentials you own
-or are authorized to access.
+There are no bundled service credentials or private service defaults. Configure
+only the optional services you actually use, outside the repository:
 
-| Variable | Purpose |
-| --- | --- |
-| `APPLIXUS_ROUTER_URL` | Approved router API base URL; no bundled default. |
-| `JEV_API_URL` | Full endpoint for the optional semantic adapter; no bundled default. |
-| `JEV_API_KEY` | Optional semantic adapter credential, replacing the bundled key. |
-| `APPLIXUS_9ROUTER_API_KEY` | Existing router credential override. |
-| `FIGMA_API_KEY` | Credential inherited by the optional Figma context MCP server. |
-| `GPT_PRO_TASK_MCP_ENDPOINT` | Full endpoint for the optional GPT Pro relay; no bundled default. |
-| `GPT_PRO_TASK_MCP_TOKEN` | Optional GPT Pro relay credential. |
+- `APPLIXUS_ROUTER_URL`: owner-approved OpenAI-compatible Responses base URL.
+- `OPENAI_API_KEY`: credential for that configured model provider.
+- `JEV_API_KEY` and `APPLIXUS_JEV_BASE_URL`: optional decision-service credential and HTTPS endpoint.
+- `GPT_PRO_TASK_MCP_ENDPOINT` and `GPT_PRO_TASK_MCP_TOKEN`: optional owner-approved GPT Pro task relay endpoint and credential.
+- `GPT_PRO_TASK_MCP_TOKEN_FILE` and `GPT_PRO_TASK_MCP_AUTH_MODE`: optional relay credential-file/authentication configuration.
+- `WEBCODEX_RUNNER_CONFIG` or `WEBCODEX_RUNNER_CONFIG_ROOT`: optional independently configured runner registration.
+- `CODEX_HOME`: Codex configuration directory when using the runtime installer.
+- `LLM_API_KEY`, `LLM_API_BASE`, `STRIX_LLM`, `STRIX_API_TYPE`: optional owner-approved Strix scanner configuration.
 
-The router URL, semantic adapter URL/key, and relay endpoint now use environment
-reads instead of private defaults. Figma inherits its key instead of receiving
-a packaged value. Missing optional adapter configuration does not grant access.
+The model names in `runtime/model-routes.json` are semantic routing aliases, not
+public provider model IDs. Map them to models your configured provider supports
+before dispatching agents. Missing optional endpoints/credentials leave those
+integrations unavailable; this repository does not provision remote services.
+MCP helpers are not automatically registered: configure them in your own Codex
+settings only after supplying an approved endpoint and credential.
 
-Account-specific Memos, gbrain, and GPT Pro MCP registrations are excluded.
-To enable these integrations, register your own MCP server in your local Codex
-configuration, using an endpoint you control and environment-based credentials.
-Generic runtime adapters and relay code remain available. Memos deployments
-typically supply `MEMOS_BASE_URL` and `MEMOS_API_KEY`; remote gbrain deployments
-should use their own URL and an environment-backed authorization header.
-The Flutter product-specific project skill and catalog entry are excluded.
+Issue autofiling is disabled by default. Set `APPLIXUS_ISSUE_AUTOFILE=1` and an
+explicit `APPLIXUS_ISSUE_REPO=owner/repository` only with the repository owner
+approval and authenticated GitHub CLI. Never commit `.env` files or tokens.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT, copyright 2026 Serkan Özaydın / Applixus. See [LICENSE](LICENSE).
